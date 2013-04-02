@@ -32,7 +32,7 @@ var Jbox	   = function(){},
 			return function(){
 				return unique++;
 			}
-		}(),
+		}(), 
 		//配置设置,简单的函数
 		config: function(){
 			var config = {BASE_PATH:'.'};
