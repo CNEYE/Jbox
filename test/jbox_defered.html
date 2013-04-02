@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<script src="../jbox.js"></script>
+<script>
+var defered = new Jbox.Defered();
+defered.when('a','b','c');
+defered.done(function(){
+	console.log('job done');
+});
+defered.fail(function(){
+	console.log('job fail');
+});
+defered.always(function(){
+	console.log('job always!');
+});
+defered.when('d','e');
+defered.done(function(){
+	console.log('job2 done');
+})
+//defered.resolve('a').resolve('b').resolve('c');
+defered.reject('a').reject('b').reject('c');
+defered.resolve('d').resolve('e');
+
+defered.when('cd','dd');
+defered.done(function(){
+	console.log("job3 done!");
+});
+defered.resolve('cd').resolve('dd')
+
+//test the function 
+function job1(){
+	console.log("job1 action!");
+	defered.resolve(arguments.callee);
+}
+function job2(){
+	console.log("job2 action!");
+	defered.resolve(arguments.callee)
+}
+defered.when(job1,job2);
+defered.done(function(){
+	console.log('function test ok!');
+});
+setTimeout(function(){
+	job1();
+	job2();
+},1000);
+</script>
+</body>
+</html>
