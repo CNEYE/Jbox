@@ -642,6 +642,6 @@ var Jbox	   = function(){},
 			}
 		});
 	});
-	
+	 
 	window.Jbox = Jbox;
 })(this);
